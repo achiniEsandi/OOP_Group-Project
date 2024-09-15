@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Browsing System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        .hero {
+            background: url('https://via.placeholder.com/1600x400') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 4rem;
+        }
+        .video-thumbnail {
+            transition: transform 0.2s;
+        }
+        .video-thumbnail:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">VideoBrowse</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Browse Videos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Upload</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>Welcome to VideoBrowse</h1>
+        <p>Explore and watch your favorite videos anytime, anywhere!</p>
+        <a href="#" class="btn btn-primary btn-lg">Browse Now</a>
+    </div>
+</section>
+
+<!-- Video Thumbnails Section -->
+<div class="container my-5">
+    <h2 class="text-center mb-4">Trending Videos</h2>
+    <div class="row">
+        <!-- Video 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card video-thumbnail">
+                <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Video 1">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 1</h5>
+                    <p class="card-text">Short description of video 1 goes here.</p>
+                    <a href="#" class="btn btn-primary">Watch Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Video 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card video-thumbnail">
+                <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Video 2">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 2</h5>
+                    <p class="card-text">Short description of video 2 goes here.</p>
+                    <a href="#" class="btn btn-primary">Watch Now</a>
+                </div>
+            </div>
+        </div>
+        <!-- Video 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card video-thumbnail">
+                <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Video 3">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 3</h5>
+                    <p class="card-text">Short description of video 3 goes here.</p>
+                    <a href="#" class="btn btn-primary">Watch Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-4">
+    <p>© 2024 VideoBrowse. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
