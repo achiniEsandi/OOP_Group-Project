@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Browsing System with CRUD</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 4.5rem;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">VideoBrowse CRUD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#videos">Videos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categories">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#users">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#comments">Comments</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CRUD Section for Videos -->
+    <div class="container" id="videos">
+        <h2 class="mt-4">Manage Videos</h2>
+        <form id="videoForm">
+            <input type="hidden" id="videoId">
+            <input type="text" id="videoTitle" class="form-control" placeholder="Video Title" required>
+            <input type="text" id="videoUrl" class="form-control" placeholder="Video URL" required>
+            <textarea id="videoDescription" class="form-control" placeholder="Video Description" rows="3"></textarea>
+            <button type="button" onclick="createOrUpdateVideo()" class="btn btn-primary">Save Video</button>
+        </form>
+
+        <h3 class="mt-4">Videos List</h3>
+        <ul id="videoList" class="list-group"></ul>
+    </div>
+
+    <!-- CRUD Section for Categories -->
+    <div class="container" id="categories">
+        <h2 class="mt-4">Manage Categories</h2>
+        <form id="categoryForm">
+            <input type="hidden" id="categoryId">
+            <input type="text" id="categoryName" class="form-control" placeholder="Category Name" required>
+            <button type="button" onclick="createOrUpdateCategory()" class="btn btn-primary">Save Category</button>
+        </form>
+
+        <h3 class="mt-4">Categories List</h3>
+        <ul id="categoryList" class="list-group"></ul>
+    </div>
+
+    <!-- CRUD Section for Users -->
+    <div class="container" id="users">
+        <h2 class="mt-4">Manage Users</h2>
+        <form id="userForm">
+            <input type="hidden" id="userId">
+            <input type="text" id="userName" class="form-control" placeholder="User Name" required>
+            <input type="email" id="userEmail" class="form-control" placeholder="User Email" required>
+            <button type="button" onclick="createOrUpdateUser()" class="btn btn-primary">Save User</button>
+        </form>
+
+        <h3 class="mt-4">Users List</h3>
+        <ul id="userList" class="list-group"></ul>
+    </div>
+
+    <!-- CRUD Section for Comments -->
+    <div class="container" id="comments">
+        <h2 class="mt-4">Manage Comments</h2>
+        <form id="commentForm">
+            <input type="hidden" id="commentId">
+            <input type="text" id="commentUser" class="form-control" placeholder="User Name" required>
+            <textarea id="commentText" class="form-control" placeholder="Comment Text" rows="3" required></textarea>
+            <button type="button" onclick="createOrUpdateComment()" class="btn btn-primary">Save Comment</button>
+        </form>
+
+        <h3 class="mt-4">Comments List</h3>
+        <ul id="commentList" class="list-group"></ul>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript CRUD Logic -->
+    <script>
+        let videoData = [];
+        let categoryData = [];
+        let userData = [];
+        let commentData = [];
+
+        // Video CRUD
+        function createOrUpdateVideo() {
+            const videoId = document.getElementById("videoId").value;
+            const title = document.getElementById("videoTitle").value;
+            const url = document.getElementById("videoUrl").value;
+            const description = document.getElementById("videoDescription").value;
+
+            if (videoId) {
+                // Update video
+                videoData[videoId] = { title, url, description };
+            } else {
+                // Create new video
+                videoData.push({ title, url, description });
+            }
+            renderVideoList();
+            document.getElementById("videoForm").reset();
+        }
+
+        function renderVideoList() {
+            const videoList = document.getElementById("videoList");
+            videoList.innerHTML = "";
+            videoData.forEach((video, index) => {
+                videoList.innerHTML += `<li class="list-group-item">
+                    ${video.title} - ${video.url}
+                    <button class="btn btn-sm btn-warning" onclick="editVideo(${index})">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteVideo(${index})">Delete</button>
+                </li>`;
+            });
+        }
+
+        function editVideo(index) {
+            document.getElementById("videoId").value = index;
+            document.getElementById("videoTitle").value = videoData[index].title;
+            document.getElementById("videoUrl").value = videoData[index].url;
+            document.getElementById("videoDescription").value = videoData[index].description;
+        }
+
+        function deleteVideo(index) {
+            videoData.splice(index, 1);
+            renderVideoList();
+        }
+
+        // Category CRUD
+        function createOrUpdateCategory() {
+            const categoryId = document.getElementById("categoryId").value;
+            const name = document.getElementById("categoryName").value;
+
+            if (categoryId) {
+                categoryData[categoryId] = { name };
+            } else {
+                categoryData.push({ name });
+            }
+            renderCategoryList();
+            document.getElementById("categoryForm").reset();
+        }
+
+        function renderCategoryList() {
+            const categoryList = document.getElementById("categoryList");
+            categoryList.innerHTML = "";
+            categoryData.forEach((category, index) => {
+                categoryList.innerHTML += `<li class="list-group-item">
+                    ${category.name}
+                    <button class="btn btn-sm btn-warning" onclick="editCategory(${index})">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteCategory(${index})">Delete</button>
+                </li>`;
+            });
+        }
+
+        function editCategory(index) {
+            document.getElementById("categoryId").value = index;
+            document.getElementById("categoryName").value = categoryData[index].name;
+        }
+
+        function deleteCategory(index) {
+            categoryData.splice(index, 1);
+            renderCategoryList();
+        }
+
+        // User CRUD
+        function createOrUpdateUser() {
+            const userId = document.getElementById("userId").value;
+            const name = document.getElementById("userName").value;
+            const email = document.getElementById("userEmail").value;
+
+            if (userId) {
+                userData[userId] = { name, email };
+            } else {
+                userData.push({ name, email });
+            }
+            renderUserList();
+            document.getElementById
