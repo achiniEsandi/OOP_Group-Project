@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Video Browsing System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Profile Header -->
+    <header class="profile-header">
+        <div class="profile-picture">
+            <img src="profile-pic.jpg" alt="User's Profile Picture">
+        </div>
+        <div class="profile-info">
+            <h1 class="username" id="username">John Doe</h1>
+            <p class="user-email" id="email">johndoe@example.com</p>
+            <p class="user-bio" id="bio">Passionate about tech and movies. Love discovering new content.</p>
+            <button id="edit-button" class="edit-button">Edit Details</button>
+        </div>
+    </header>
+
+    <!-- Profile Navigation -->
+    <nav class="profile-nav">
+        <ul>
+            <li><a href="#" id="history-tab" class="active">Watch History</a></li>
+            <li><a href="#" id="favorites-tab">Favorites</a></li>
+            <li><a href="#" id="playlists-tab">Playlists</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content Sections -->
+    <main>
+        <!-- Watch History Section -->
+        <section id="watch-history" class="profile-section active">
+            <h2>Watch History</h2>
+            <div class="video-list" id="history-list">
+                <!-- Dynamic content loaded by JS -->
+            </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section id="favorites" class="profile-section">
+            <h2>Favorites</h2>
+            <div class="video-list" id="favorites-list">
+                <!-- Dynamic content loaded by JS -->
+            </div>
+        </section>
+
+        <!-- Playlists Section -->
+        <section id="playlists" class="profile-section">
+            <h2>Playlists</h2>
+            <div class="playlist-list" id="playlists-list">
+                <!-- Dynamic content loaded by JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Editing Profile Details -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Profile Details</h2>
+            <form id="edit-form">
+                <label for="edit-username">Username:</label>
+                <input type="text" id="edit-username" value="John Doe">
+                
+                <label for="edit-email">Email:</label>
+                <input type="email" id="edit-email" value="johndoe@example.com">
+                
+                <label for="edit-bio">Bio:</label>
+                <textarea id="edit-bio">Passionate about tech and movies. Love discovering new content.</textarea>
+                
+                <button type="submit" class="save-button">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Footer (Settings, Logout) -->
+    <footer class="profile-footer">
+        <a href="#">Account Settings</a> | 
+        <a href="#">Privacy</a> | 
+        <a href="#">Logout</a>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

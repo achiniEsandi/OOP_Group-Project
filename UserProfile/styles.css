@@ -1,0 +1,86 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.profile-info {
+    margin-left: 20px;
+}
+
+.profile-info .username {
+    font-size: 2em;
+    margin: 0;
+}
+
+.profile-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    background-color: #444;
+    margin: 0;
+}
+
+.profile-nav ul li {
+    margin-right: 10px;
+}
+
+.profile-nav ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.profile-nav ul li a.active {
+    background-color: #555;
+}
+
+.profile-section {
+    display: none;
+    padding: 20px;
+    background-color: white;
+}
+
+.profile-section.active {
+    display: block;
+}
+
+.video-list, .playlist-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.video-list div, .playlist-list div {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.profile-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
